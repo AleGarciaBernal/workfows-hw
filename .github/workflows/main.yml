@@ -19,7 +19,7 @@ jobs:
 
       - name: Running tests
         run: |
-          # Comandos para ejecutar pruebas
+          echo "Ejecutando pruebas"
 
   build:
     runs-on: windows-latest
@@ -30,7 +30,7 @@ jobs:
 
       - name: Building the project
         run: |
-          # Comandos para compilar el proyecto
+          echo "Compilando el proyecto"
 
   deploy:
     runs-on: windows-latest
