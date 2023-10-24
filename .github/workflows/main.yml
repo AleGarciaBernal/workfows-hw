@@ -1,0 +1,44 @@
+name: Workflow-DevOps
+
+on:
+  push:
+    branches:
+      - release/*
+      - feature/*
+
+  schedule:
+    - cron: '45 20 * * 1'  # Se ejecuta cada lunes a las 15:45 UTC (20:00 hora boliviana)
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Checking out code
+        uses: actions/checkout@v2
+
+      - name: Running tests
+        run: |
+          # Comandos para ejecutar pruebas
+
+  build:
+    runs-on: windows-latest
+    needs: test
+    steps:
+      - name: Checking out code
+        uses: actions/checkout@v2
+
+      - name: Building the project
+        run: |
+          # Comandos para compilar el proyecto
+
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    if: startsWith(github.ref, 'refs/heads/release/') || startsWith(github.ref, 'refs/heads/feature/')
+    steps:
+      - name: Checking out code
+        uses: actions/checkout@v2
+
+      - name: Deploying the project
+        run: |
+          # Comandos para implementar el proyecto en el entorno deseado
