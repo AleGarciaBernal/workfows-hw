@@ -12,7 +12,7 @@ on:
 
 jobs:
   test:
-    runs-on: windows-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checking out code
         uses: actions/checkout@v2
@@ -22,7 +22,7 @@ jobs:
           echo "Ejecutando pruebas"
 
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-20.04
     needs: test
     steps:
       - name: Checking out code
@@ -33,7 +33,7 @@ jobs:
           echo "Compilando el proyecto"
 
   deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-20.04
     needs: build
     if: startsWith(github.ref, 'refs/heads/release/') || startsWith(github.ref, 'refs/heads/feature/')
     steps:
